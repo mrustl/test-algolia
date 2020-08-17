@@ -18,6 +18,10 @@ search.addWidgets([
     attribute: 'pub_type_name',
   }),
   instantsearch.widgets.refinementList({
+    container: '#year-list',
+    attribute: 'year',
+  }),
+  instantsearch.widgets.refinementList({
     container: '#author-list',
     attribute: 'authors',
   }),
@@ -34,7 +38,7 @@ search.addWidgets([
     </div>`,
       item: `
         <div>
-          <div class="publication">{{authors}} ({{year}}): <a href={{permalink}}>{{title}}.{{publication}}</a></div>
+          <div class="publication">{{authors}} ({{year}}): <a href={{permalink}}>{{title}}</a>. {{publication}}</div>
           <br></br>
           <div>{{#helpers.highlight}}{ "attribute": "summary" }{{/helpers.highlight}}</div>   
         </div>  
