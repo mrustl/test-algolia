@@ -1,7 +1,7 @@
 /* global instantsearch algoliasearch */
 
 const search = instantsearch({
-  indexName: 'netlify_kwb-pubs',
+  indexName: 'pubs_test',
   searchClient: algoliasearch('FUZHRLXPF4', '7fb333226a19b1a7af131612dd428928'),
   routing: true,
 });
@@ -14,12 +14,16 @@ search.addWidgets([
     container: '#clear-refinements',
   }),
   instantsearch.widgets.refinementList({
-    container: '#page-list',
-    attribute: 'type',
+    container: '#pubs-list',
+    attribute: 'pub_type_name',
   }),
   instantsearch.widgets.refinementList({
     container: '#author-list',
     attribute: 'authors',
+  }),
+  instantsearch.widgets.refinementList({
+    container: '#project-list',
+    attribute: 'projects',
   }),
   instantsearch.widgets.hits({
     container: '#hits',
@@ -32,7 +36,7 @@ search.addWidgets([
         <div>
           <div class="publication">{{authors}} ({{date}}): <a href={{permalink}}>{{title}}</a></div>
           <br></br>
-          <div>{{summary}}</div>   
+          <div>{{#helpers.highlight}}{ "attribute": "summary" }{{/helpers.highlight}}</div>   
         </div>  
       `,
     },
