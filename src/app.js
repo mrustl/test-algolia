@@ -34,7 +34,7 @@ search.addWidgets([
     </div>`,
       item: `
         <div>
-          <div class="publication">{{authors}} ({{date}}): <a href={{permalink}}>{{title}}</a></div>
+          <div class="publication">{{authors}} ({{year}}): <a href={{permalink}}>{{title}}.{{publication}}</a></div>
           <br></br>
           <div>{{#helpers.highlight}}{ "attribute": "summary" }{{/helpers.highlight}}</div>   
         </div>  
