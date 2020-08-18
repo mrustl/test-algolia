@@ -41,25 +41,41 @@ search.addWidgets([
       <a role="button" href=".">Clear all filters</a>
     </div>`,
       item: function (data) {
-        const position = data.__hitIndex + 1;
-        return (
-          '<div>' +
-          data.authors +
-          ' (' +
-          data._highlightResult.year.value +
-          '): <a href= ' +
-          data.relpermalink +
-          '> ' +
-          data._highlightResult.title.value +
-          '</a>. ' +
-          data.publication +
-          '</div><br></br><p>' +
-          data._highlightResult.summary.value +
-          ' </p>'
-        );
+        if (data.summary === '') {
+          return (
+            '<div>' +
+            data.authors +
+            ' (' +
+            data._highlightResult.year.value +
+            '): <a href= ' +
+            data.relpermalink +
+            '> ' +
+            data._highlightResult.title.value +
+            '</a>. ' +
+            data.publication +
+            '</div>'
+          );
+        } else {
+          return (
+            '<div>' +
+            data.authors +
+            ' (' +
+            data._highlightResult.year.value +
+            '): <a href= ' +
+            data.relpermalink +
+            '> ' +
+            data._highlightResult.title.value +
+            '</a>. ' +
+            data.publication +
+            '</div></div><p>Abstract: ' +
+            data._highlightResult.summary.value +
+            ' </p>'
+          );
+        }
       },
     },
   }),
+
   instantsearch.widgets.pagination({
     container: '#pagination',
   }),
