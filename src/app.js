@@ -16,21 +16,25 @@ search.addWidgets([
   instantsearch.widgets.refinementList({
     container: '#pubs-list',
     attribute: 'pub_type_name',
+    sortBy: ['name:asc'],
   }),
   instantsearch.widgets.refinementList({
     container: '#year-list',
     attribute: 'year',
+    sortBy: ['name:desc'],
     showMore: true,
   }),
   instantsearch.widgets.refinementList({
     container: '#author-list',
     attribute: 'authors',
     operator: 'and',
+    sortBy: ['count:desc'],
     showMore: true,
   }),
   instantsearch.widgets.refinementList({
     container: '#project-list',
     attribute: 'projects',
+    sortBy: ['count:desc'],
     showMore: true,
   }),
   instantsearch.widgets.hits({
