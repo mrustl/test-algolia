@@ -48,7 +48,7 @@ search.addWidgets([
             ' (' +
             data._highlightResult.year.value +
             '): <a href= ' +
-            data.relpermalink +
+            data.permalink +
             '> ' +
             data._highlightResult.title.value +
             '</a>. ' +
@@ -62,7 +62,7 @@ search.addWidgets([
             ' (' +
             data._highlightResult.year.value +
             '): <a href= ' +
-            data.relpermalink +
+            data.permalink +
             '> ' +
             data._highlightResult.title.value +
             '</a>. ' +
