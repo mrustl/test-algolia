@@ -59,9 +59,9 @@ const router = instantsearch.routers.history({
       query: decodeURIComponent(query),
       page,
       pub_type_name: allTypes.map(decodeURIComponent),
-      pub_type_name: allYears.map(decodeURIComponent),
-      pub_type_name: allAuthors.map(decodeURIComponent),
-      pub_type_name: allProjects.map(decodeURIComponent),
+      year: allYears.map(decodeURIComponent),
+      authors: allAuthors.map(decodeURIComponent),
+      projects: allProjects.map(decodeURIComponent),
     };
   },
 });
