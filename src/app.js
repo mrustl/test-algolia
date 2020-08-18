@@ -5,7 +5,7 @@ import searchRouting from './search-routing';
 const search = instantsearch({
   indexName: 'pubs_test',
   searchClient: algoliasearch('FUZHRLXPF4', '7fb333226a19b1a7af131612dd428928'),
-  routing: true,
+  routing: searchRouting,
 });
 
 search.addWidgets([
