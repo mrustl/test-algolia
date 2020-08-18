@@ -20,14 +20,18 @@ search.addWidgets([
   instantsearch.widgets.refinementList({
     container: '#year-list',
     attribute: 'year',
+    showMore: true,
   }),
   instantsearch.widgets.refinementList({
     container: '#author-list',
     attribute: 'authors',
+    operator: 'and',
+    showMore: true,
   }),
   instantsearch.widgets.refinementList({
     container: '#project-list',
     attribute: 'projects',
+    showMore: true,
   }),
   instantsearch.widgets.hits({
     container: '#hits',
@@ -36,13 +40,24 @@ search.addWidgets([
       <p>No results have been found for {{ query }}</p>
       <a role="button" href=".">Clear all filters</a>
     </div>`,
-      item: `
-        <div>
-          <div class="publication">{{authors}} ({{year}}): <a href={{permalink}}>{{title}}</a>. {{publication}}</div>
-          <br></br>
-          <div>{{#helpers.highlight}}{ "attribute": "summary" }{{/helpers.highlight}}</div>   
-        </div>  
-      `,
+      item: function (data) {
+        const position = data.__hitIndex + 1;
+        return (
+          '<div>' +
+          data.authors +
+          ' (' +
+          data._highlightResult.year.value +
+          '): <a href= ' +
+          data.relpermalink +
+          '> ' +
+          data._highlightResult.title.value +
+          '</a>. ' +
+          data.publication +
+          '</div><br></br><p>' +
+          data._highlightResult.summary.value +
+          ' </p>'
+        );
+      },
     },
   }),
   instantsearch.widgets.pagination({
