@@ -1,3 +1,5 @@
+import searchRouting from './search-routing';
+
 /* global instantsearch algoliasearch */
 
 const search = instantsearch({
@@ -62,7 +64,7 @@ search.addWidgets([
         } else {
           return (
             '<div>' +
-            data.authors +
+            data.authors.join(', ') +
             ' (' +
             data._highlightResult.year.value +
             '): <a href= ' +
