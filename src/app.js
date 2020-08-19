@@ -28,6 +28,7 @@ search.addWidgets([
     attribute: 'year',
     sortBy: ['name:desc'],
     showMore: true,
+    limit: 5,
   }),
   instantsearch.widgets.refinementList({
     container: '#author-list',
@@ -35,6 +36,7 @@ search.addWidgets([
     operator: 'and',
     sortBy: ['count:desc'],
     showMore: true,
+    limit: 5,
     searchable: true,
   }),
   instantsearch.widgets.refinementList({
@@ -42,7 +44,16 @@ search.addWidgets([
     attribute: 'projects',
     sortBy: ['count:desc'],
     showMore: true,
+    limit: 5,
     searchable: true,
+  }),
+  instantsearch.widgets.hitsPerPage({
+    container: '#hits-per-page',
+    items: [
+      { label: '5 hits per page', value: 5 },
+      { label: '10 hits per page', value: 10, default: true },
+      { label: '20 hits per page', value: 20 },
+    ],
   }),
   instantsearch.widgets.hits({
     container: '#hits',

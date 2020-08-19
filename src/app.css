@@ -20,8 +20,17 @@ body {
   width: 250px;
 }
 
+.middle-panel {
+  margin-left: 260px;
+}
+
 .right-panel {
   margin-left: 260px;
+}
+
+.hits-panel {
+  float: right;
+  width: 100px;
 }
 
 .ais-InstantSearch {
