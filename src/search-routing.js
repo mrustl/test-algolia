@@ -35,7 +35,7 @@ const router = instantsearch.routers.history({
   },
 
   parseURL({ qsModule, location }) {
-    const pathnameMatches = location.pathname.match(/search\/(.*?)\/?$/);
+    const pathnameMatches = location.pathname.match(/search\/(.*?)\?$/);
 
     const {
       query = '',

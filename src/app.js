@@ -9,6 +9,9 @@ const search = instantsearch({
 });
 
 search.addWidgets([
+  instantsearch.widgets.currentRefinements({
+    container: '#current-refinements',
+  }),
   instantsearch.widgets.searchBox({
     container: '#searchbox',
   }),
@@ -32,12 +35,14 @@ search.addWidgets([
     operator: 'and',
     sortBy: ['count:desc'],
     showMore: true,
+    searchable: true,
   }),
   instantsearch.widgets.refinementList({
     container: '#project-list',
     attribute: 'projects',
     sortBy: ['count:desc'],
     showMore: true,
+    searchable: true,
   }),
   instantsearch.widgets.hits({
     container: '#hits',
@@ -47,6 +52,7 @@ search.addWidgets([
       <a role="button" href=".">Clear all filters</a>
     </div>`,
       item: function (data) {
+        const abstract_id = 'abstract-' + data.__hitIndex + 1;
         if (data.summary === '') {
           return (
             '<div>' +
@@ -73,9 +79,13 @@ search.addWidgets([
             data._highlightResult.title.value +
             '</a>. ' +
             data.publication +
-            '</div></div><p>Abstract: ' +
+            '<br></br><button type="button" class="btn btn-info" data-toggle="collapse" data-target="#' +
+            abstract_id +
+            '">Abstract</a><div id="' +
+            abstract_id +
+            '" class="collapse">' +
             data._highlightResult.summary.value +
-            ' </p>'
+            '</div'
           );
         }
       },
