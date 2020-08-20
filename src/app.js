@@ -94,7 +94,7 @@ search.addWidgets([
             abstract_id +
             '">Abstract</a><div id="' +
             abstract_id +
-            '" class="collapse">' +
+            '" class="collapse show multi-collapse">' +
             data._highlightResult.summary.value +
             '</div'
           );
