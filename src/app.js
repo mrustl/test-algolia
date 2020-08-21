@@ -9,6 +9,11 @@ const search = instantsearch({
 });
 
 search.addWidgets([
+  instantsearch.widgets.analytics({
+    pushFunction(formattedParameters, state, results) {
+      /*  help needed: add code for Matomo  (https://developer.matomo.org/guides/tracking-javascript-guide)*/
+    },
+  }),
   instantsearch.widgets.currentRefinements({
     container: '#current-refinements',
   }),
