@@ -40,14 +40,16 @@ const router = instantsearch.routers.history({
     const {
       query = '',
       page,
-      types = [],
-      years = [],
+      pub_type_name = [],
+      year = [],
       authors = [],
       projects = [],
     } = qsModule.parse(location.search.slice(1));
     // `qs` does not return an array when there's a single value.
-    const allTypes = Array.isArray(types) ? types : [types].filter(Boolean);
-    const allYears = Array.isArray(years) ? years : [years].filter(Boolean);
+    const allTypes = Array.isArray(pub_type_name)
+      ? pub_type_name
+      : [pub_type_name].filter(Boolean);
+    const allYears = Array.isArray(year) ? year : [year].filter(Boolean);
     const allAuthors = Array.isArray(authors)
       ? authors
       : [authors].filter(Boolean);
