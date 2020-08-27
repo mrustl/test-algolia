@@ -72,12 +72,15 @@ search.addWidgets([
         const abstract_id = 'abstract-' + data.__hitIndex + 1;
         const authors = data.authors;
         const authors_link = authors.map(
-          (a) => '<a href= "search/?authors=' + a + '">' + a + '</a>'
+          (a) =>
+            '<span><a href= "search/?authors=' + a + '">' + a + '</a></span>'
         );
         if (data.summary === '') {
           return (
             '<div>' +
+            '<span class="article-metadata li-cite-author">' +
             authors_link.join(', ') +
+            '</span>' +
             ' (' +
             data._highlightResult.year.value +
             '): <a href= ' +
