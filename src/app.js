@@ -6,6 +6,7 @@ const search = instantsearch({
   indexName: 'pubs_test',
   searchClient: algoliasearch('FUZHRLXPF4', '7fb333226a19b1a7af131612dd428928'),
   routing: searchRouting,
+  /* https://discourse.algolia.com/t/limit-searches-to-3-characters-or-more-with-instantsearch/8067/2 */
 });
 
 search.addWidgets([
@@ -69,10 +70,14 @@ search.addWidgets([
     </div>`,
       item: function (data) {
         const abstract_id = 'abstract-' + data.__hitIndex + 1;
+        const authors = data.authors;
+        const authors_link = authors.map(
+          (a) => '<a href= "search/?authors=' + a + '">' + a + '</a>'
+        );
         if (data.summary === '') {
           return (
             '<div>' +
-            data.authors +
+            authors_link.join(', ') +
             ' (' +
             data._highlightResult.year.value +
             '): <a href= ' +
@@ -86,7 +91,7 @@ search.addWidgets([
         } else {
           return (
             '<div>' +
-            data.authors.join(', ') +
+            authors_link.join(', ') +
             ' (' +
             data._highlightResult.year.value +
             '): <a href= ' +
