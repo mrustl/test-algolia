@@ -38,7 +38,7 @@ search.addWidgets([
   }),
   instantsearch.widgets.refinementList({
     container: '#author-list',
-    attribute: 'authors',
+    attribute: 'author',
     operator: 'and',
     sortBy: ['count:desc'],
     showMore: true,
@@ -47,7 +47,7 @@ search.addWidgets([
   }),
   instantsearch.widgets.refinementList({
     container: '#project-list',
-    attribute: 'projects',
+    attribute: 'project',
     sortBy: ['count:desc'],
     showMore: true,
     limit: 5,
@@ -70,7 +70,7 @@ search.addWidgets([
     </div>`,
       item: function (data) {
         const abstract_id = 'abstract-' + data.__hitIndex + 1;
-        const authors = data.authors;
+        const authors = data.author;
         const authors_link = authors.map(
           (a) =>
             '<span><a href= "search/?authors=' + a + '">' + a + '</a></span>'

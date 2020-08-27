@@ -12,18 +12,16 @@ const router = instantsearch.routers.history({
       queryParameters.page = routeState.page;
     }
     if (routeState.pub_type_name) {
-      queryParameters.pub_type_name = routeState.pub_type_name.map(
-        encodeURIComponent
-      );
+      queryParameters.type = routeState.type.map(encodeURIComponent);
     }
     if (routeState.year) {
       queryParameters.year = routeState.year.map(encodeURIComponent);
     }
-    if (routeState.authors) {
-      queryParameters.authors = routeState.authors.map(encodeURIComponent);
+    if (routeState.author) {
+      queryParameters.author = routeState.author.map(encodeURIComponent);
     }
-    if (routeState.projects) {
-      queryParameters.projects = routeState.projects.map(encodeURIComponent);
+    if (routeState.project) {
+      queryParameters.project = routeState.project.map(encodeURIComponent);
     }
 
     const queryString = qsModule.stringify(queryParameters, {
@@ -40,30 +38,28 @@ const router = instantsearch.routers.history({
     const {
       query = '',
       page,
-      pub_type_name = [],
+      type = [],
       year = [],
-      authors = [],
-      projects = [],
+      author = [],
+      project = [],
     } = qsModule.parse(location.search.slice(1));
     // `qs` does not return an array when there's a single value.
-    const allTypes = Array.isArray(pub_type_name)
-      ? pub_type_name
-      : [pub_type_name].filter(Boolean);
+    const allTypes = Array.isArray(type) ? type : [type].filter(Boolean);
     const allYears = Array.isArray(year) ? year : [year].filter(Boolean);
-    const allAuthors = Array.isArray(authors)
-      ? authors
-      : [authors].filter(Boolean);
-    const allProjects = Array.isArray(projects)
-      ? projects
-      : [projects].filter(Boolean);
+    const allAuthors = Array.isArray(author)
+      ? author
+      : [author].filter(Boolean);
+    const allProjects = Array.isArray(project)
+      ? project
+      : [project].filter(Boolean);
 
     return {
       query: decodeURIComponent(query),
       page,
-      pub_type_name: allTypes.map(decodeURIComponent),
+      type: allTypes.map(decodeURIComponent),
       year: allYears.map(decodeURIComponent),
-      authors: allAuthors.map(decodeURIComponent),
-      projects: allProjects.map(decodeURIComponent),
+      author: allAuthors.map(decodeURIComponent),
+      project: allProjects.map(decodeURIComponent),
     };
   },
 });
@@ -74,18 +70,18 @@ const stateMapping = {
     return {
       query: uiState.pubs_test.query,
       page: uiState.pubs_test.page,
-      pub_type_name:
+      type:
         uiState.pubs_test.refinementList &&
-        uiState.pubs_test.refinementList.pub_type_name,
+        uiState.pubs_test.refinementList.type,
       year:
         uiState.pubs_test.refinementList &&
         uiState.pubs_test.refinementList.year,
-      authors:
+      author:
         uiState.pubs_test.refinementList &&
-        uiState.pubs_test.refinementList.authors,
-      projects:
+        uiState.pubs_test.refinementList.author,
+      project:
         uiState.pubs_test.refinementList &&
-        uiState.pubs_test.refinementList.projects,
+        uiState.pubs_test.refinementList.project,
     };
   },
 
@@ -97,10 +93,10 @@ const stateMapping = {
         query: routeState.query,
         page: routeState.page,
         refinementList: {
-          pub_type_name: routeState.pub_type_name,
+          type: routeState.type,
           year: routeState.year,
-          authors: routeState.authors,
-          projects: routeState.projects,
+          author: routeState.author,
+          project: routeState.project,
         },
       },
     };
