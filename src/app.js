@@ -76,6 +76,19 @@ search.addWidgets([
           (a) =>
             '<span><a href= "search/?authors=' + a + '">' + a + '</a></span>'
         );
+        let project = '';
+        if (data.project !== null) {
+          project += data.project.map(
+            (p) =>
+              '<a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="?project=' +
+              p +
+              '">' +
+              data.project_btn +
+              ': ' +
+              p +
+              '</a>'
+          );
+        }
         const cite =
           '<a class="btn btn-outline-primary my-1 mr-1 btn-sm js-cite-modal" href="' +
           base_url +
@@ -99,7 +112,7 @@ search.addWidgets([
             data.doi +
             '">DOI</a>';
         }
-        const links = '<p>' + cite + pdf + doi + '</p>';
+        const links = '<p>' + cite + doi + pdf + project + '</p>';
         const publication =
           '<div>' +
           '<span class="article-metadata li-cite-author">' +
