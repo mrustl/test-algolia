@@ -75,34 +75,25 @@ search.addWidgets([
           (a) =>
             '<span><a href= "search/?authors=' + a + '">' + a + '</a></span>'
         );
+        const publication =
+          '<div>' +
+          '<span class="article-metadata li-cite-author">' +
+          authors_link.join(', ') +
+          '</span>' +
+          ' (' +
+          data._highlightResult.year.value +
+          '): <a href= ' +
+          data.permalink +
+          '> ' +
+          data._highlightResult.title.value +
+          '</a>. ' +
+          data.publication +
+          '</div>';
         if (data.summary === '') {
-          return (
-            '<div>' +
-            '<span class="article-metadata li-cite-author">' +
-            authors_link.join(', ') +
-            '</span>' +
-            ' (' +
-            data._highlightResult.year.value +
-            '): <a href= ' +
-            data.permalink +
-            '> ' +
-            data._highlightResult.title.value +
-            '</a>. ' +
-            data.publication +
-            '</div>'
-          );
+          return publication;
         } else {
           return (
-            '<div>' +
-            authors_link.join(', ') +
-            ' (' +
-            data._highlightResult.year.value +
-            '): <a href= ' +
-            data.permalink +
-            '> ' +
-            data._highlightResult.title.value +
-            '</a>. ' +
-            data.publication +
+            publication +
             '<br></br><button type="button" class="btn btn-info" data-toggle="collapse" data-target="#' +
             abstract_id +
             '">Abstract</a><div id="' +
@@ -122,3 +113,4 @@ search.addWidgets([
 ]);
 
 search.start();
+
