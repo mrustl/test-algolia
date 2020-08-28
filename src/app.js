@@ -77,16 +77,18 @@ search.addWidgets([
         );
         let project = '';
         if (data.project !== null) {
-          project += data.project.map(
-            (p) =>
-              '<a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="?project=' +
-              p +
-              '">' +
-              data.project_btn +
-              ': ' +
-              p +
-              '</a>'
-          );
+          project += data.project
+            .map(
+              (p) =>
+                '<a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="?project=' +
+                p +
+                '">' +
+                data.project_btn +
+                ': ' +
+                p +
+                '</a>'
+            )
+            .join('');
         }
         const cite =
           '<a class="btn btn-outline-primary my-1 mr-1 btn-sm js-cite-modal" href="' +
