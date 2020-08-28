@@ -69,12 +69,37 @@ search.addWidgets([
       <a role="button" href=".">Clear all filters</a>
     </div>`,
       item: function (data) {
+        const base_url = 'https://deploy-preview-47--kwb.netlify.app';
         const abstract_id = 'abstract-' + data.__hitIndex + 1;
         const authors = data.author;
         const authors_link = authors.map(
           (a) =>
             '<span><a href= "search/?authors=' + a + '">' + a + '</a></span>'
         );
+        const cite =
+          '<a class="btn btn-outline-primary my-1 mr-1 btn-sm js-cite-modal" href="' +
+          base_url +
+          data.cite_link +
+          '">' +
+          data.cite_name +
+          '</a>';
+        let pdf = '';
+        if (data.pdf !== '') {
+          pdf +=
+            '<a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="' +
+            base_url +
+            data.pdf +
+            '">PDF</a>';
+        }
+        let doi = '';
+        if (data.doi !== null) {
+          doi +=
+            '<a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="' +
+            base_url +
+            data.doi +
+            '">DOI</a>';
+        }
+        const links = '<p>' + cite + pdf + doi + '</p>';
         const publication =
           '<div>' +
           '<span class="article-metadata li-cite-author">' +
@@ -88,13 +113,14 @@ search.addWidgets([
           data._highlightResult.title.value +
           '</a>. ' +
           data.publication +
+          links +
           '</div>';
         if (data.summary === '') {
           return publication;
         } else {
           return (
             publication +
-            '<br></br><button type="button" class="btn btn-info" data-toggle="collapse" data-target="#' +
+            '<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#' +
             abstract_id +
             '">Abstract</a><div id="' +
             abstract_id +
@@ -113,4 +139,3 @@ search.addWidgets([
 ]);
 
 search.start();
-
