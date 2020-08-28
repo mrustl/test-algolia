@@ -56,8 +56,8 @@ search.addWidgets([
   instantsearch.widgets.hitsPerPage({
     container: '#hits-per-page',
     items: [
-      { label: '5 hits per page', value: 5 },
-      { label: '10 hits per page', value: 10, default: true },
+      { label: '5 hits per page', value: 5, default: true },
+      { label: '10 hits per page', value: 10 },
       { label: '20 hits per page', value: 20 },
     ],
   }),
