@@ -11,7 +11,7 @@ const router = instantsearch.routers.history({
     if (routeState.page !== 1) {
       queryParameters.page = routeState.page;
     }
-    if (routeState.pub_type_name) {
+    if (routeState.type) {
       queryParameters.type = routeState.type.map(encodeURIComponent);
     }
     if (routeState.year) {

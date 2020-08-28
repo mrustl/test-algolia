@@ -26,7 +26,7 @@ search.addWidgets([
   }),
   instantsearch.widgets.refinementList({
     container: '#pubs-list',
-    attribute: 'pub_type_name',
+    attribute: 'type',
     sortBy: ['name:asc'],
   }),
   instantsearch.widgets.refinementList({
@@ -73,8 +73,7 @@ search.addWidgets([
         const abstract_id = 'abstract-' + data.__hitIndex + 1;
         const authors = data.author;
         const authors_link = authors.map(
-          (a) =>
-            '<span><a href= "search/?authors=' + a + '">' + a + '</a></span>'
+          (a) => '<span><a href= "?author=' + a + '">' + a + '</a></span>'
         );
         let project = '';
         if (data.project !== null) {
