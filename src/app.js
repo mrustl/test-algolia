@@ -71,10 +71,9 @@ search.addWidgets([
       item: function (data) {
         const base_url = 'https://deploy-preview-47--kwb.netlify.app';
         const abstract_id = 'abstract-' + data.__hitIndex + 1;
-        const authors = data.author;
-        const authors_link = authors.map(
-          (a) => '<span><a href= "?author=' + a + '">' + a + '</a></span>'
-        );
+        const authors = data._highlightResult.author
+          .map(({ value }) => `<a href="?author=${value}">${value}</a>`)
+          .join(', ');
         let project = '';
         if (data.project !== null) {
           project += data.project
@@ -117,7 +116,7 @@ search.addWidgets([
         const publication =
           '<div>' +
           '<span class="article-metadata li-cite-author">' +
-          authors_link.join(', ') +
+          authors +
           '</span>' +
           ' (' +
           data._highlightResult.year.value +
