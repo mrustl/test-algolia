@@ -76,15 +76,15 @@ search.addWidgets([
           .join(', ');
         let project = '';
         if (data.project !== null) {
-          project += data.project
+          project += data._highlightResult.project
             .map(
               (p) =>
                 '<a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="?project=' +
-                p +
+                p.value +
                 '">' +
                 data.project_btn +
                 ': ' +
-                p +
+                p.value +
                 '</a>'
             )
             .join('');
