@@ -72,7 +72,7 @@ search.addWidgets([
         const base_url = 'https://deploy-preview-47--kwb.netlify.app';
         const abstract_id = 'abstract-' + data.__hitIndex + 1;
         const authors = data._highlightResult.author
-          .map(({ value }) => `<a href="?author=${value}">${value}</a>`)
+          .map((a) => '<a href="?author=' + a.value + '">' + a.value + '</a>')
           .join(', ');
         let project = '';
         if (data.project !== null) {

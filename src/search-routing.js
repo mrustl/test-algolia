@@ -29,12 +29,10 @@ const router = instantsearch.routers.history({
       arrayFormat: 'repeat',
     });
 
-    return `${baseUrl}search/${queryString}`;
+    return `${baseUrl}search${queryString}`;
   },
 
   parseURL({ qsModule, location }) {
-    const pathnameMatches = location.pathname.match(/search\/(.*?)\?$/);
-
     const {
       query = '',
       page,
