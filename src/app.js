@@ -35,6 +35,16 @@ search.addWidgets([
     sortBy: ['name:desc'],
     showMore: true,
     limit: 5,
+    templates: {
+      showMoreText: `
+        {{#isShowingMore}}
+          Weniger…
+        {{/isShowingMore}}
+        {{^isShowingMore}}
+          Mehr…
+        {{/isShowingMore}}
+        `,
+    },
   }),
   instantsearch.widgets.refinementList({
     container: '#author-list',
