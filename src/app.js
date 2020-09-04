@@ -91,8 +91,6 @@ search.addWidgets([
           return [x, authors_name[i]].join(' ');
         });
         let project = '';
-        let project_link = '';
-        let project_name = '';
         if (data.project !== null) {
           const project_link = data.project.map(
             (p) =>
