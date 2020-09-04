@@ -91,19 +91,26 @@ search.addWidgets([
           return [x, authors_name[i]].join(' ');
         });
         let project = '';
+        let project_link = '';
+        let project_name = '';
         if (data.project !== null) {
-          project += data._highlightResult.project
-            .map(
-              (p) =>
-                '<a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="?project=' +
-                p.value +
-                '">' +
-                data.project_btn +
-                ': ' +
-                p.value +
-                '</a>'
-            )
-            .join('');
+          const project_link = data.project.map(
+            (p) =>
+              '<a class="btn btn-outline-primary my-1 mr-1 btn-sm" href="?project=' +
+              p +
+              '">' +
+              data.project_btn +
+              ': '
+          );
+
+          const project_name = data._highlightResult.project.map(
+            (p) => p.value + '</a>'
+          );
+          project += project_link
+            .map(function (x, i) {
+              return [x, project_name[i]].join('');
+            })
+            .join(' ');
         }
         const cite =
           '<a class="btn btn-outline-primary my-1 mr-1 btn-sm js-cite-modal" href="' +
