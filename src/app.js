@@ -81,9 +81,15 @@ search.addWidgets([
       item: function (data) {
         const base_url = 'https://deploy-preview-47--kwb.netlify.app';
         const abstract_id = 'abstract-' + data.__hitIndex + 1;
-        const authors = data._highlightResult.author
-          .map((a) => '<a href="?author=' + a.value + '">' + a.value + '</a>')
-          .join(', ');
+        const authors_link = data.author.map(
+          (a) => '<a href="?author=' + a + '">'
+        );
+        const authors_name = data._highlightResult.author.map(
+          (a) => a.value + '</a>'
+        );
+        const authors = authors_link.map(function (x, i) {
+          return [x, authors_name[i]].join(' ');
+        });
         let project = '';
         if (data.project !== null) {
           project += data._highlightResult.project
