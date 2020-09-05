@@ -1,6 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Matomo -->
+    <script type="text/javascript">
+      var _paq = (window._paq = window._paq || []);
+      /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function () {
+        var u = 'https://matomo.datenhelden.com/';
+        _paq.push(['setTrackerUrl', u + 'matomo.php']);
+        _paq.push(['setSiteId', '9']);
+        var d = document,
+          g = d.createElement('script'),
+          s = d.getElementsByTagName('script')[0];
+        g.type = 'text/javascript';
+        g.async = true;
+        g.src = u + 'matomo.js';
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script>
+    <!-- End Matomo Code -->
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -15,27 +35,34 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/instantsearch.css@7/themes/algolia-min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
     <link rel="stylesheet" href="./src/index.css" />
     <link rel="stylesheet" href="./src/app.css" />
-
-    <title>ais-ecommerce-demo-app</title>
   </head>
 
   <body>
     <div class="ais-InstantSearch">
-      <h1>InstantSearch.js Publications</h1>
-
       <div class="left-panel">
         <div id="clear-refinements"></div>
-
-        <h2>Page types</h2>
-        <div id="brand-list"></div>
-        <h2>Authors</h2>
-        <div id="author-list"></div>
+        <!-- <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" >Show abstracts</button>-->
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target=".multi-collapse">Show/Hide abstracts</button>
+        <br></br>
+        <h4>Typ</h4>
+        <div id="pubs-list"></div>
+        <h4>Jahr</h4>
+        <p id="year-list"></p>
+        <h4>Autor</h4>
+        <p id="author-list"></p>
+        <h4>Projekt</h4>
+        <p id="project-list"></p>
       </div>
-
       <div class="right-panel">
+        <div id="current-refinements"></div>
         <div id="searchbox" class="ais-SearchBox"></div>
+        <p id="hits-per-page"></p>
         <div id="hits"></div>
         <div id="pagination"></div>
       </div>
@@ -43,6 +70,9 @@
 
     <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="./src/app.js"></script>
   </body>
 </html>
